@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
-    content: ""
+    content: "",
   });
 
   function handleChange(event) {
@@ -12,14 +12,17 @@ function CreateArea(props) {
     setNote((prevNote) => {
       return {
         ...prevNote,
-        [name]: value
+        [name]: value,
       };
     });
   }
 
   function submitNote(event) {
     props.onAdd(note); //Calling onAdd() on the props is equivalent to calling the addNote() function in App.jsx
-
+    setNote({
+      title: "",
+      content: "",
+    });
     // Prevent the React app from auto-refreshing when the form is submitted
     event.preventDefault();
   }
